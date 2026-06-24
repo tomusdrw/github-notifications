@@ -1,0 +1,28 @@
+{
+  "name": "github-notifications-feed",
+  "version": "0.1.0",
+  "description": "Poll GitHub notifications, hydrate content, append to a local JSONL feed file",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "gh-notifications": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "octokit": "^5.0.5",
+    "pino": "^9.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}
