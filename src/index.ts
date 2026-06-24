@@ -3,6 +3,8 @@
 import { Command } from "commander";
 import pino from "pino";
 import { resolveToken, resolveOutputPath } from "./config.js";
+import { createOctokit } from "./github-client.js";
+import { captureAll } from "./capture.js";
 import type { CliOptions } from "./types.js";
 
 const program = new Command();
@@ -48,9 +50,8 @@ async function main(): Promise<void> {
 
     logger.info({ output: outputPath }, "Starting GitHub notifications capture");
 
-    // Orchestration is wired in U5. For now, log that we're ready.
-    logger.info("Capture orchestration not yet wired (U5). Token resolved successfully.");
-    logger.debug({ tokenLength: token.length }, "Token resolved");
+    const octokit = createOctokit(token);
+    await captureAll(octokit, outputPath, logger);
   } catch (err) {
     logger.error({ err: err instanceof Error ? err.message : String(err) }, "Fatal error");
     process.exit(1);
