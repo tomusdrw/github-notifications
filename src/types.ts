@@ -56,6 +56,16 @@ export interface FeedRecord {
 
 export interface CliOptions {
   tokenFile: string | undefined;
-  output: string;
+  output: string | undefined;
   verbose: boolean;
+}
+
+export interface IssueListItem {
+  number: number;
+  title: string;
+  state: string;
+  html_url: string;
+  repository_full_name: string;
+  updated_at: string;
+  kind: "issue" | "pull_request";
 }
