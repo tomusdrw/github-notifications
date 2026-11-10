@@ -14,7 +14,7 @@ vi.mock("octokit", () => {
     };
   }
   return {
-    Octokit: vi.fn((opts) => {
+    Octokit: vi.fn(function (opts) {
       const instance = createMockOctokit();
       return { ...instance, _opts: opts };
     }),
