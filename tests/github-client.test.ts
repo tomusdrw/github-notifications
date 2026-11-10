@@ -14,6 +14,8 @@ vi.mock("octokit", () => {
     };
   }
   return {
+    // Must be a regular function, not an arrow function: createOctokit calls
+    // `new Octokit(...)`, and arrow functions have no own prototype/this.
     Octokit: vi.fn(function (opts) {
       const instance = createMockOctokit();
       return { ...instance, _opts: opts };
