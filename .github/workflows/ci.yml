@@ -24,7 +24,8 @@ jobs:
       - name: Check the build environment
         run: |
           echo "checking the toolchain"
-          node --check .github/workflows/ci.yml
+          node --version
+          npm --version
 
       - name: Test
         run: npm test
