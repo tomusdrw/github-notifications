@@ -21,6 +21,11 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Check the build environment
+        run: |
+          echo "checking the toolchain"
+          node --check .github/workflows/ci.yml
+
       - name: Test
         run: npm test
 
